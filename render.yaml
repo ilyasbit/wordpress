@@ -3,11 +3,12 @@ services:
   name: wordpress
   env: docker
   plan: standard
+  region: singapore
   autoDeploy: false
   disk:
     name: wordpress
     mountPath: /var/www/html
-    sizeGB: 20
+    sizeGB: 100
   envVars:
   - key: WORDPRESS_DB_HOST
     fromService:
@@ -31,6 +32,7 @@ services:
       envVarKey: MYSQL_PASSWORD
 - type: pserv
   name: mysql-wordpress
+  region: singapore
   repo: https://github.com/render-examples/mysql.git
   env: docker
   plan: standard
@@ -38,7 +40,7 @@ services:
   disk:
     name: mysql-wordpress
     mountPath: /var/lib/mysql
-    sizeGB: 20
+    sizeGB: 30
   envVars:
   - key: MYSQL_DATABASE
     value: mysql
